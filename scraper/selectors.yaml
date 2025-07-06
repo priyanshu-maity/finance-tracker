@@ -13,6 +13,7 @@ stmt_date: "./td[2]"
 stmt_details: "./td[3]"
 stmt_amount: "./td[4]/div/decimal-casing"
 stmt_balance: "./td[4]/div/div/decimal-casing"
+stmt_trans_type: "//td[4]/div[2]/span"
 
 next_page_button: "//a[text()='NEXT']"
 logout_button: "(//button[@type='button' and text()='Logout'])[2]"

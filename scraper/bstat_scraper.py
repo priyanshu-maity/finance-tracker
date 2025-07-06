@@ -1,4 +1,6 @@
 import undetected_chromedriver as uc
+from dotenv import load_dotenv
+import os
 
 
 class BStatScraper:
@@ -14,3 +16,8 @@ class BStatScraper:
 
     def close(self):
         self.driver.quit()
+    
+    @staticmethod
+    def load_details(self) -> tuple[str, str]:
+        load_dotenv()
+        return os.getenv('CUSTOMER_ID'), os.getenv('PASSWORD')

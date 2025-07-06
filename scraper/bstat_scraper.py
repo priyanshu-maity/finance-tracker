@@ -16,6 +16,10 @@ import random
 class BStatScraper:
     def __init__(self, headless=True):
         options = uc.ChromeOptions()
+        options.add_argument('--no-sandbox')
+        options.add_argument('--disable-dev-shm-usage')
+        options.add_argument('--disable-gpu')
+        options.add_argument('--incognito')
         if headless:
             options.add_argument('--headless')
         self.driver = uc.Chrome(options=options)
@@ -37,6 +41,19 @@ class BStatScraper:
         WebDriverWait(self.driver, timeout=10).until(
             EC.element_to_be_clickable((By.XPATH, selectors['continue_button']))
         ).click()
+        sleep(random.uniform(1.5, 3.0))
+
+        self.driver.switch_to.default_content()
+
+        password_input: WebElement = WebDriverWait(self.driver, timeout=20).until(
+            EC.element_to_be_clickable((By.XPATH, selectors['password']))
+        )
+        self.smart_type(password_input, password)
+        sleep(random.uniform(1.5, 3.0))
+
+        WebDriverWait(self.driver, timeout=10).until(
+            EC.element_to_be_clickable((By.XPATH, selectors['login_button']))
+        ).click()
 
     def close(self):
         self.driver.quit()
@@ -52,7 +69,7 @@ class BStatScraper:
             return yaml.safe_load(file)
 
     @staticmethod
-    def smart_type(element: WebElement, text: str, min_delay: float = 0.2, max_delay: float = 0.5):
+    def smart_type(element: WebElement, text: str, min_delay: float = 0.05, max_delay: float = 0.5):
         for char in text:
             element.send_keys(char)
             sleep(random.uniform(min_delay, max_delay))

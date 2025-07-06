@@ -3,3 +3,17 @@ continue_button: "//a[text()='CONTINUE']"
 
 password: "//input[@id='keyboard']"
 login_button: "//a[text()='LOGIN']"
+
+close_popup_button: "//a/strong['Try Later']"
+savings_acc_summary_button: "//ul[@class='inner-cols clearfix']"
+
+stmt_duration_input: "//input[@aria-label='Select box']"
+stmt_trs: "//tr[@class='ng-scope']"
+stmt_date: "./td[2]"
+stmt_details: "./td[3]"
+stmt_amount: "./td[4]/div/decimal-casing"
+stmt_balance: "./td[4]/div/div/decimal-casing"
+
+next_page_button: "//a[text()='NEXT']"
+logout_button: "(//button[@type='button' and text()='Logout'])[2]"
+logout_confirm_button: "//a[text()='YES']"

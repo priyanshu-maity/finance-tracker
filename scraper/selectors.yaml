@@ -1,3 +1,5 @@
 customer_id: "//input[@name='fldLoginUserId']"
 continue_button: "//a[text()='CONTINUE']"
 
+password: "//input[@id='keyboard']"
+login_button: "//a[text()='LOGIN']"

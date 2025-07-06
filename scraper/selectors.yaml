@@ -1,0 +1,3 @@
+customer_id: "//input[@name='fldLoginUserId']"
+continue_button: "//a[text()='CONTINUE']"
+

@@ -1,7 +1,10 @@
 import undetected_chromedriver as uc
+from selenium.webdriver.remote.webelement import WebElement
 from dotenv import load_dotenv
 import os
 import yaml
+from time import sleep
+import random
 
 
 class BStatScraper:
@@ -28,3 +31,9 @@ class BStatScraper:
     def load_selectors() -> dict:
         with open('selectors.yaml', 'r') as file:
             return yaml.safe_load(file)
+
+    @staticmethod
+    def smart_type(element, text: str, min_delay: float = 0.05, max_delay: float = 0.15):
+        for char in text:
+            element.send_keys(char)
+            sleep(random.uniform(min_delay, max_delay))
